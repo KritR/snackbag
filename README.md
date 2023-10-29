@@ -1,36 +1,71 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# SnackBag 🛠️
 
-## Getting Started
+## Open Source, Offline-First, Browser-based Utility Toolkit
 
-First, run the development server:
+SnackBag is a collection of powerful, offline-first utilities that run directly in your browser. Built with WebAssembly for performance, and Next.js for a seamless user experience, SnackBag is your go-to toolkit for file conversions, data edits, and more.
+
+## 🌟 Features
+
+- **File Conversions**: Convert between common file formats like PDF, PNG, JPG, and more.
+- **Data Edits**: Perform simple edits on text, numbers, and images.
+- **Math Helpers**: Solve complex math problems with ease.
+- **Crypto Tools**: Generate hashes, encrypt/decrypt data, and more.
+- **Offline-First**: All utilities work offline for enhanced privacy and convenience.
+- **WebAssembly Powered**: Experience lightning-fast operations thanks to WebAssembly.
+  
+## 🚀 Getting Started
+
+### Requirements
+
+- Node.js (v14+)
+- npm
+
+### Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/yourusername/snackbag.git
+```
+
+Navigate into the project directory:
+
+```bash
+cd snackbag
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open your browser and go to `http://localhost:3000`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🤝 How to Contribute
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+1. **Fork the Repository**: Click the 'Fork' button at the top right of this page.
+2. **Clone Your Fork**: `git clone https://github.com/yourusername/snackbag.git`
+3. **Create a Branch**: `git checkout -b new-feature-branch`
+4. **Make Changes**: Implement your changes, then run `npm run lint` and `npm run test` to ensure code quality.
+5. **Commit Your Changes**: `git commit -m "Describe changes here"`
+6. **Push to GitHub**: `git push origin new-feature-branch`
+7. **Open a Pull Request**: Go to your fork on GitHub and click the 'New Pull Request' button.
 
-## Learn More
+## 📚 Documentation
 
-To learn more about Next.js, take a look at the following resources:
+For detailed documentation, check out the [Wiki](#).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📝 License
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+This project is licensed under the MIT License. See the [LICENSE.md](LICENSE.md) file for details.
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Feel free to make further changes or additions as needed! Would you like to discuss any more aspects of your project?
