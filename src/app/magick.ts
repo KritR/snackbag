@@ -7,6 +7,7 @@ import {
     Magick,
     MagickFormat,
     Quantum,
+    IMagickImage
 } from '@imagemagick/magick-wasm';
 
 const testMagick = () => {
@@ -20,4 +21,19 @@ const testMagick = () => {
   });
 }
 
-export {testMagick};
+
+const convertImageFormat = async (imageData: Blob, type: MagickFormat) => {
+  await initializeImageMagick(bytes.buffer);
+  const arrayBuffer = await imageData.arrayBuffer();
+  const uintArr = new Uint8Array(arrayBuffer);
+
+  return new Promise<Blob>((resolve, _reject) => {
+    ImageMagick.read(uintArr, (image: IMagickImage) => {
+      image.write(type, data => {
+        resolve(new Blob([data]));
+      });
+    });
+  });
+}
+
+export {testMagick, convertImageFormat};

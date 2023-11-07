@@ -9,8 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@ffmpeg/core": "^0.12.4",
+    "@ffmpeg/ffmpeg": "^0.12.7",
+    "@ffmpeg/util": "^0.12.1",
     "@imagemagick/magick-wasm": "^0.0.24",
     "browser-fs-access": "^0.35.0",
+    "copy-webpack-plugin": "^11.0.0",
     "encoded-uint8array-loader": "^1.0.3",
     "next": "14.0.0",
     "react": "^18",
