@@ -26,9 +26,9 @@ export default function Index() {
       </Card>
       <Card>
         <h3>Plaintext</h3>
-        <input className='block fixed' value={uuid}/>
+        <input className='block fixed' onChange={() => {}} value={uuid}/>
         <h3>Win32 GUID</h3>
-        <input className='block fixed' value={formatAsWin32(uuid)}/>
+        <input className='block fixed' onChange={() => {}} value={formatAsWin32(uuid)}/>
       </Card>
       <button className='block' onClick={() => refreshUUID()}>Generate New</button>
     </>

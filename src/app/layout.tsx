@@ -26,10 +26,8 @@ export default function RootLayout({
         <div className='flex flex-col items-center p-8 md:p-12 lg:p-24'>
           <div className='w-full max-w-screen-md flex flex-col lg:flex-row'>
             <Link href='/'><button className='block'>Home</button></Link>
-            <main className="min-h-screen ">
-              <div className=" w-full">
-                {children}
-              </div>
+            <main className="w-full">
+              {children}
             </main>
           </div>
         </div>
