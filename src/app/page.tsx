@@ -19,10 +19,13 @@ export default function Home() {
           <ul>
             <li><Link href='/image/convert' className='font-medium cursor-pointer blue-sky hover:underline'>Image Converter</Link></li>
           </ul>
+          {/*
+            TODO: uncomment when video conversion is working
           <h3 className='text-lg my-1'>Videos</h3>
           <ul>
             <li><Link href='/video/convert' className='font-medium cursor-pointer hover:underline'>Video Converter</Link></li>
           </ul>
+          */}
           <h3 className='text-lg my-1'>Math</h3>
           <ul>
             <li><Link href='/math/base-converter' className='font-medium cursor-pointer hover:underline'>Base Converter</Link></li>

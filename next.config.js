@@ -8,9 +8,11 @@ const nextConfig = {
     config.plugins = [
       ...config.plugins,
       new CopyPlugin({
+
+        // TODO: change back to esm when ffmpeg wasm gets update.
         patterns: [
           {
-            from: "./node_modules/@ffmpeg/core/dist/esm/ffmpeg-core.js",
+            from: "./node_modules/@ffmpeg/core/dist/umd/ffmpeg-core.js",
             to: "./static/chunks/ffmpeg-core.js"
           },
           {
