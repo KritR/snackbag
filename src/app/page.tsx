@@ -6,7 +6,7 @@ import Link from 'next/link';
 export default function Home() {
 
   return (
-    <main className="flex min-h-screen flex-col items-center p-24">
+    <>
       <Card>
           <h1 className='text-xl my-1'>Snackbag</h1>
           <p className='font-medium'>A set of browser native tools to manipulate files and data.</p>
@@ -33,6 +33,6 @@ export default function Home() {
           <li><Link href='/crypto/uuid-generator' className='font-medium cursor-pointer hover:underline'>UUID Generator</Link></li>
         </ul>
       </Card>
-    </main>
+    </>
   )
 }

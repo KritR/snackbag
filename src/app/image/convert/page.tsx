@@ -17,7 +17,7 @@ export default function Home() {
 
 
   return (
-    <main className="flex min-h-screen flex-col items-center p-24">
+    <>
       <Card>
         <h1 className='text-xl my-1'>Image Converter</h1>
         <p className='font-medium'>Quickly convert between image formats such as jpeg, png, etc.</p>
@@ -74,6 +74,6 @@ export default function Home() {
       }}>
         Convert and Download
       </button>
-    </main>
+    </>
   )
 }
