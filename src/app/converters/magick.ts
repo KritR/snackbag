@@ -22,13 +22,14 @@ const testMagick = () => {
 }
 
 
-const convertImageFormat = async (imageData: Blob, type: MagickFormat) => {
+const convertImageFormat = async (imageData: Blob, type: MagickFormat, quality: number) => {
   await initializeImageMagick(bytes.buffer);
   const arrayBuffer = await imageData.arrayBuffer();
   const uintArr = new Uint8Array(arrayBuffer);
 
   return new Promise<Blob>((resolve, _reject) => {
     ImageMagick.read(uintArr, (image: IMagickImage) => {
+      image.quality = quality
       image.write(type, data => {
         resolve(new Blob([data]));
       });

@@ -1,6 +1,15 @@
 import {FFmpeg } from '@ffmpeg/ffmpeg';
 
-const convertVideoFormat = async (videoBlob: Blob, type: string) => {
+enum VideoFormat {
+  Avi = 'video/avi',
+  Mp4 = 'video/mp4'
+}
+
+enum AudioFormat {
+  Vorbis
+}
+
+const convertVideoFormat = async (videoBlob: Blob, videoFormat: VideoFormat, audioFormat: AudioFormat) => {
   const arrayBuffer = await videoBlob.arrayBuffer();
   const uintArr = new Uint8Array(arrayBuffer);
 
