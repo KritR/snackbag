@@ -7,6 +7,8 @@ export default function ScreenRecorder() {
   const [isRecording, setIsRecording] = useState(false);
   const [videoURL, setVideoURL] = useState('');
   const [includeAudio, setIncludeAudio] = useState(false);
+  const [includeMic, setIncludeMic] = useState(false);
+
 
   const mediaRecorder = useRef<MediaRecorder | null>(null);
 
@@ -14,17 +16,33 @@ export default function ScreenRecorder() {
     if (isRecording) return;
 
     try {
-      const stream = await navigator.mediaDevices.getDisplayMedia({
+      const screenStream = await navigator.mediaDevices.getDisplayMedia({
         video: true,
         audio: includeAudio, // This will include the system audio if the checkbox is checked
       });
-      mediaRecorder.current = new MediaRecorder(stream);
+
+      // Now get the user microphone if needed
+      let micStream : MediaStream | null = null;
+      if (includeMic) {
+        micStream = await navigator.mediaDevices.getUserMedia({
+          audio: true
+        });
+      }
+
+      // If we have a mic stream, we'll need to combine the tracks
+      if (micStream) {
+        screenStream.addTrack(micStream.getTracks()[0]);
+      }
+
+      mediaRecorder.current = new MediaRecorder(screenStream);
       mediaRecorder.current.ondataavailable = handleDataAvailable;
 
       // Ensure we cleanup streams and release display media capture.
       mediaRecorder.current.onstop = () => {
-        const tracks = stream.getTracks();
-        tracks.forEach(track => track.stop());
+        screenStream.getTracks().forEach(track => track.stop());
+        if (micStream) {
+          micStream.getTracks().forEach((track) => track.stop());
+        }
       };
 
       mediaRecorder.current.start();
@@ -64,6 +82,16 @@ export default function ScreenRecorder() {
         <p className='font-medium'>Record your screen for tutorials, presentations, and more.</p>
       </Card>
       <Card>
+        <label>
+          <input
+            className='mx-2'
+            type="checkbox"
+            checked={includeMic}
+            onChange={(e) => setIncludeMic(e.target.checked)}
+          />
+          Include Microphone
+        </label>
+
         <label>
           <input
             className='mx-2'
