@@ -17,6 +17,13 @@ export default function AudioRecorder() {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
       mediaRecorder.current = new MediaRecorder(stream);
       mediaRecorder.current.ondataavailable = handleDataAvailable;
+
+      // Ensure we cleanup streams and release audio capture.
+      mediaRecorder.current.onstop = () => {
+        const tracks = stream.getTracks();
+        tracks.forEach(track => track.stop());
+      };
+
       mediaRecorder.current.start();
       setIsRecording(true);
     } catch (error) {
