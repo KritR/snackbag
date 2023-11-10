@@ -33,6 +33,7 @@ export default function Home() {
         </ul>
         <h3 className='text-lg my-1'>Device</h3>
         <ul>
+          <li><Link href='/device/camera-record' className='font-medium cursor-pointer hover:underline'>Record Camera</Link></li>
           <li><Link href='/device/mic-record' className='font-medium cursor-pointer hover:underline'>Record Microphone</Link></li>
           <li><Link href='/device/screen-record' className='font-medium cursor-pointer hover:underline'>Record Screen</Link></li>
         </ul>
