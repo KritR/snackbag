@@ -31,6 +31,10 @@ export default function Home() {
           <li><Link href='/crypto/uuid-generator' className='font-medium cursor-pointer hover:underline'>UUID Generator</Link></li>
           <li><Link href='/crypto/data-hasher' className='font-medium cursor-pointer hover:underline'>Data Hasher</Link></li>
         </ul>
+        <h3 className='text-lg my-1'>Device</h3>
+        <ul>
+          <li><Link href='/device/mic-record' className='font-medium cursor-pointer hover:underline'>Record Microphone</Link></li>
+        </ul>
       </Card>
     </>
   )
