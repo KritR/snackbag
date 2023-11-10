@@ -73,9 +73,13 @@ export default function AudioRecorder() {
           <audio controls={true} ref={audioRef} src={audioURL} onEnded={() => setIsPlaying(false)} />
           <button className='block' onClick={clearRecording} disabled={!audioURL}>Clear</button>
         </Card>
-        <a href={audioURL} download={`recording-${new Date().toISOString()}.mp3`}>
-          <button className='block'>Download</button>
-        </a>
+        <div className='flex'>
+          <a className='inline' href={audioURL} download={`recording-${new Date().toISOString()}.mp3`}>
+            <div>
+            <button className='block'>Download</button>
+            </div>
+          </a>
+        </div>
       </>
 
       }
