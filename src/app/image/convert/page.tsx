@@ -14,6 +14,7 @@ export default function Home() {
   const [quality, setQuality] = useState(100);
   const [format, setFormat] = useState<MagickFormat>(MagickFormat.Png);
   const [fileList, setFileList] = useState<File[]>([]);
+  const [isConverting, setIsConverting] = useState(false);
 
 
   return (
@@ -62,15 +63,32 @@ export default function Home() {
           }}
         />
       </Card>
-      <button className="block" onClick={async () => {
-        const {convertImageFormat} = await import('../../converters/magick');
-        fileList.forEach((f) => {
-          const output = convertImageFormat(f, format, quality);
-          fileSave(output, {
-            fileName: f.name.replace(/\.[^/.]+$/, ".") + format,
-            extensions: ['.' + format]
-          });
-        })
+      {isConverting && 
+        <Card>
+          <h3>Conversion in progress...</h3>
+        </Card>
+      }
+      <button className="block disabled:opacity-75" disabled={isConverting || (fileList.length == 0)} onClick={async () => {
+        setIsConverting(true);
+        try {
+          const {convertImageFormat} = await import('../../converters/magick');
+          const fileConversions = fileList.map((f) => {
+            const output = convertImageFormat(f, format, quality);
+            return fileSave(output, {
+              fileName: f.name.replace(/\.[^/.]+$/, ".") + format,
+              extensions: ['.' + format]
+            });
+          })
+          await Promise.all(fileConversions);
+        }
+        catch (e)
+        {
+          console.log("Error converting files: " + e);
+        }
+        finally
+        {
+          setIsConverting(false);
+        }
       }}>
         Convert and Download
       </button>

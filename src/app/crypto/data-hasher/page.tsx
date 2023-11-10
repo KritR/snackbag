@@ -59,6 +59,10 @@ export default function HashingPage() {
     }
   };
 
+  const isContentAvailable = () => {
+    return (inputType == 'text' && text != '') || (inputType == 'file' && file);
+  }
+
   return (
     <>
       <Card>
@@ -104,7 +108,7 @@ export default function HashingPage() {
         ) : (
           <input type="file" className='block fixed' onChange={handleFileChange} />
         )}
-        <button className='block' onClick={handleHash}>Generate Hash</button>
+        <button className='block disabled:opacity-75' disabled={!isContentAvailable()} onClick={handleHash}>Generate Hash</button>
       </Card>
       {hash && (
         <Card>
