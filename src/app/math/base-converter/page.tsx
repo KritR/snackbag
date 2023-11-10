@@ -12,7 +12,28 @@ export default function Home() {
     {     
       number = '0';
     }
+    if (base < 2 || base > 36)
+    {
+      return;
+    }
     setValue(parseInt(number, base));
+  }
+
+  const updateCustomBase = (base: string) => {
+    
+    let numberBase = 0;
+    if (base.length != 0)
+    {
+      numberBase = Number(base);
+    }
+
+    if (numberBase > 36)
+    {
+      numberBase = 36;
+    }
+    
+    console.log("setting custom base to " + numberBase);
+    setCustomBase(numberBase);
   }
 
   return (
@@ -31,8 +52,10 @@ export default function Home() {
         <h3>Binary (Base 2)</h3>
         <input className="block fixed" name="binary-val" type='string' value={value.toString(2)} onChange={(e) => updateNumber(e.target.value, 2)} />
         <h3>Custom Base</h3>
-        <input className='block fixed' name='customBase' type='number' value={customBase} onChange={(e) => setCustomBase(Number(e.target.value))} />
-        <input className="block fixed" name="binary-val" type='string' value={value.toString(customBase)} onChange={(e) => updateNumber(e.target.value, customBase)} />
+        {customBase < 2 ? 
+          <label htmlFor='customBase' className='text-sm font-light text-red-500'>Must be between 2 - 36</label> : null}
+        <input className='block fixed' name='customBase' type='number' min='2' max='36' value={customBase} onChange={(e) => updateCustomBase(e.target.value)} />
+        <input className="block fixed" name="binary-val" type='string' value={customBase >= 2 ? value.toString(customBase) : 0} onChange={(e) => updateNumber(e.target.value, customBase)} />
       </Card>
     </>
   )
