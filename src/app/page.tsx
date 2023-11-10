@@ -29,6 +29,7 @@ export default function Home() {
         <h3 className='text-lg my-1'>Crypto</h3>
         <ul>
           <li><Link href='/crypto/uuid-generator' className='font-medium cursor-pointer hover:underline'>UUID Generator</Link></li>
+          <li><Link href='/crypto/data-hasher' className='font-medium cursor-pointer hover:underline'>Data Hasher</Link></li>
         </ul>
       </Card>
     </>
