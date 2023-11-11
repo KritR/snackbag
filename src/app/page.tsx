@@ -1,7 +1,20 @@
 import Card from './components/card'
 import Link from 'next/link';
+import Image from 'next/image'
 
 export default function Home() {
+
+  interface LinkItemProps
+  {
+    href: string;
+    title: string;
+  };
+
+  const LinkItem = (props: LinkItemProps) => {
+    return (
+      <Link href={props.href} className='font-medium cursor-pointer hover:underline'>{props.title}</Link>
+    );
+  };
 
   return (
     <>
@@ -13,7 +26,7 @@ export default function Home() {
         <h2 className='text-xl my-2'>Tool List</h2>
         <h3 className='text-lg my-1'>Images</h3>
         <ul>
-          <li><Link href='/image/convert' className='font-medium cursor-pointer blue-sky hover:underline'>Image Converter</Link></li>
+          <li><LinkItem href='/image/convert' title='Image Converter'/></li>
         </ul>
         {/*
           TODO: uncomment when video conversion is working
@@ -24,20 +37,37 @@ export default function Home() {
         */}
         <h3 className='text-lg my-1'>Math</h3>
         <ul>
-          <li><Link href='/math/base-converter' className='font-medium cursor-pointer hover:underline'>Base Converter</Link></li>
+          <li><LinkItem href='/math/base-converter' title='Base Converter'/></li>
         </ul>
         <h3 className='text-lg my-1'>Crypto</h3>
         <ul>
-          <li><Link href='/crypto/uuid-generator' className='font-medium cursor-pointer hover:underline'>UUID Generator</Link></li>
-          <li><Link href='/crypto/data-hasher' className='font-medium cursor-pointer hover:underline'>Data Hasher</Link></li>
+          <li><LinkItem href='/crypto/uuid-generator' title='UUID Generator' /></li>
+          <li><LinkItem href='/crypto/data-hasher' title='Data Hasher' /></li>
         </ul>
         <h3 className='text-lg my-1'>Device</h3>
         <ul>
-          <li><Link href='/device/camera-record' className='font-medium cursor-pointer hover:underline'>Record Camera</Link></li>
-          <li><Link href='/device/mic-record' className='font-medium cursor-pointer hover:underline'>Record Microphone</Link></li>
-          <li><Link href='/device/screen-record' className='font-medium cursor-pointer hover:underline'>Record Screen</Link></li>
+          <li><LinkItem href='/device/camera-record' title='Record Camera'/></li>
+          <li><LinkItem href='/device/mic-record' title='Record Microphone'/></li>
+          <li><LinkItem href='/device/screen-record' title='Record Screen'/></li>
         </ul>
       </Card>
+      <div className='flex flex-row'>
+        <div className='block'>
+          <a href='https://github.com/kritr/snackbag'>
+            <div className='flex flex-row p-1 items-center'>
+              <Image src='/github-mark.svg' alt='Github Logo' width='20' height='10'/>
+              <span className='mx-2'>GitHub</span>
+            </div>
+          </a>
+        </div>
+        <div className='block align-middle'>
+          <a href='mailto:sleeves.era_0r@icloud.com?subject=Snackbag Issue'>
+            <div className='flex p-1 items-center'>
+              <span className=''>Report an Issue</span>
+            </div>
+          </a>
+        </div>
+      </div>
     </>
   )
 }
