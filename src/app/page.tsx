@@ -12,7 +12,9 @@ export default function Home() {
 
   const LinkItem = (props: LinkItemProps) => {
     return (
-      <Link href={props.href} className='font-medium cursor-pointer hover:underline'>{props.title}</Link>
+      <div className='flex'>
+      <Link href={props.href} className='font-medium cursor-pointer hover:underline block'>{props.title}</Link>
+      </div>
     );
   };
 

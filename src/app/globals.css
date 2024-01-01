@@ -27,3 +27,12 @@ body {
     rgb(var(--background-start-rgb));
 }
 */
+
+.block.unblock:before {
+  border-radius: 0px;
+}
+
+.block.unblock:after {
+  background: transparent;
+  border: 0px;
+}
